@@ -1,7 +1,7 @@
 module.exports = {
-    httpAdminRoot:"/",
-    httpNodeRoot: "/",
-    ui: { path: "ui" },
+    httpAdminRoot:"/admin",
+    httpNodeRoot: "/api",
+    ui: { path: "dashboard" },
     
     userDir:"/home/nodered/.node-red/",
     // the tcp port that the Node-RED web server is listening on
@@ -36,11 +36,11 @@ module.exports = {
     //debugUseColors: true,
 
     // The file containing the flows. If not set, it defaults to flows_<hostname>.json
-    //flowFile: 'flows.json',
+    flowFile: 'flows.json',
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
-    //flowFilePretty: true,
+    flowFilePretty: true,
 
     // By default, credentials are encrypted in storage using a generated key. To
     // specify your own secret, set the following property.
@@ -86,18 +86,23 @@ module.exports = {
     // relative to httpRoot
     //ui: { path: "ui" },
 
-    // Securing Node-RED
+    editorTheme: {
+        projects: {
+            enabled: true
+        }
+    },
+     // Securing Node-RED
     // -----------------
     // To password protect the Node-RED editor and admin API, the following
     // property can be used. See http://nodered.org/docs/security.html for details.
-    //adminAuth: {
-    //    type: "credentials",
-    //    users: [{
-    //        username: "admin",
-    //        password: "$2a$08$zZWtXTja0fB1pzD4sHCMyOCMYz2Z6dNbM6tl8sJogENOMcxWV9DN.",
-    //        permissions: "*"
-    //    }]
-    //},
+    adminAuth: {
+       type: "credentials",
+       users: [{
+           username: "admin",
+           password: "$2a$08$v7aH/AmmYZGoY.loqHm5XOILAgg0qmh8cbGztXj9FrmOiW8BBxr6m",
+           permissions: "*"
+       }]
+    },
 
     // To password protect the node-defined HTTP endpoints (httpNodeRoot), or
     // the static content (httpStatic), the following properties can be used.
@@ -160,10 +165,14 @@ module.exports = {
     //    context.global.os
 
     functionGlobalContext: {
-        // os:require('os'),
-        // octalbonescript:require('octalbonescript'),
-        // jfive:require("johnny-five"),
-        // j5board:require("johnny-five").Board({repl:false})
+        rulesEngine: require("json-rules-engine").Engine,
+        moment: require("moment"),
+        getValue: require('get-value'),
+        azureStorage: require('azure-storage'),
+        suncalc: require('suncalc'),
+        arithmetic: require('arithmetic-js'),
+        geolib: require('geolib'),
+        geoTz: require("geo-tz")
     },
 
     // The following property can be used to order the categories in the editor
