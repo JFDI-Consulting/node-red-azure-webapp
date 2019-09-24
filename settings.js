@@ -172,9 +172,16 @@ module.exports = {
         suncalc: require('suncalc'),
         arithmetic: require('arithmetic-js'),
         geolib: require('geolib'),
-        geoTz: require("geo-tz")
+        geoTz: require("geo-tz"),
+        bobbAuthLib: require("@jfdi/bobb-authorisation-lib"),
+        lodash: require("lodash")
     },
 
+    contextStorage: {
+        default: "file",
+        memoryOnly: { module: 'memory' },
+        file: { module: 'localfilesystem' }
+    },
     // The following property can be used to order the categories in the editor
     // palette. If a node's category is not in the list, the category will get
     // added to the end of the palette.
@@ -203,8 +210,8 @@ module.exports = {
         "template": {
           "swagger": "2.0",
           "info": {
-            "title": "Node-RED in Azure API",
-            "version": "0.0.1"
+            "title": "Bobb API",
+            "version": "1.0.0"
           }
         }
       }

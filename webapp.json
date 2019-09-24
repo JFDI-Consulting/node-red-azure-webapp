@@ -24,7 +24,7 @@
         "P3",
         "P4"
       ],
-      "defaultValue": "F1",
+      "defaultValue": "B1",
       "metadata": {
         "description": "The pricing tier for the hosting plan. For any tier >=B1 Always on will be activated."
       }
@@ -57,9 +57,16 @@
     },
     "nodeJsVersion":{
       "type": "string",
-      "defaultValue": "8.11.1",
+      "defaultValue": "10.15.2",
       "metadata": {
         "description": "Nodejs version, make sure that the App Service supports the version you set here."
+      }
+    },
+    "npmToken":{
+      "type": "string",
+      "defaultValue": "9e8ce17b-ad34-4ffd-965d-74dcd5d313f1",
+      "metadata": {
+        "description": "NPM Token for private scoped access to JFDI npm packages."
       }
     }
   },
@@ -143,7 +150,8 @@
             "displayName": "AppSettings"
           },
           "properties": {
-            "WEBSITE_NODE_DEFAULT_VERSION": "[parameters('nodeJsVersion')]"
+            "WEBSITE_NODE_DEFAULT_VERSION": "[parameters('nodeJsVersion')]",
+            "NPM_TOKEN": "[parameters('npmToken')]"
           }
         },
         {
