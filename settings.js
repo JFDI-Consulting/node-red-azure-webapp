@@ -40,7 +40,7 @@ module.exports = {
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
-    flowFilePretty: true,
+    flowFilePretty: false,
 
     // By default, credentials are encrypted in storage using a generated key. To
     // specify your own secret, set the following property.
@@ -88,7 +88,7 @@ module.exports = {
 
     editorTheme: {
         projects: {
-            enabled: true
+            enabled: false
         }
     },
      // Securing Node-RED
@@ -135,10 +135,10 @@ module.exports = {
     // in the HTTP nodes.
     // See https://github.com/troygoode/node-cors#configuration-options for
     // details on its contents. The following is a basic permissive set of options:
-    //httpNodeCors: {
-    //    origin: "*",
-    //    methods: "GET,PUT,POST,DELETE"
-    //},
+    httpNodeCors: {
+       origin: "*",
+       methods: "GET,PUT,POST,DELETE"
+    },
 
     // If you need to set an http proxy please set an environment variable
     // called http_proxy (or HTTP_PROXY) outside of Node-RED in the operating system.
@@ -165,6 +165,9 @@ module.exports = {
     //    context.global.os
 
     functionGlobalContext: {
+        os: require("os"),
+        fs: require("fs"),
+        path: require("path"),
         rulesEngine: require("json-rules-engine").Engine,
         moment: require("moment"),
         getValue: require('get-value'),
@@ -174,7 +177,8 @@ module.exports = {
         geolib: require('geolib'),
         geoTz: require("geo-tz"),
         bobbAuthLib: require("@jfdi/bobb-authorisation-lib"),
-        lodash: require("lodash")
+        lodash: require("lodash"),
+        tplink: require("tplink-cloud-api")
     },
 
     contextStorage: {

@@ -1,7 +1,7 @@
 # node-red-azure-webapp
-A webapp wrapper for running Bobb on node-red in an Azure Windows Web App.
+A webapp wrapper for running Bobb on node-red in an Azure Windows Web App. It should deploy everything required for Bobb including whatever settings and latest flows have been placed here.
 
-***This is now deprecated. The preferred way to run Bobb on node-red in Azure is using a docker container with a Linux Web App Service. See https://github.com/JFDI-Consulting/bobbenginenr-docker which fulfills this purpose.***
+~~***This is now deprecated. The preferred way to run Bobb on node-red in Azure is using a docker container with a Linux Web App Service. See https://github.com/JFDI-Consulting/bobbenginenr-docker which fulfills this purpose.***~~
  
 To use it just:
 

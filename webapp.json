@@ -4,6 +4,7 @@
   "parameters": {
     "siteName": {
       "type": "string",
+      "defaultValue": "BobbNR",
       "metadata": {
         "description": "The name of the web app that you wish to create."
       }
@@ -67,6 +68,55 @@
       "defaultValue": "9e8ce17b-ad34-4ffd-965d-74dcd5d313f1",
       "metadata": {
         "description": "NPM Token for private scoped access to JFDI npm packages."
+      }
+    },
+    "mqttBroker":{
+      "type": "string",
+      "defaultValue": "m20.cloudmqtt.com",
+      "metadata": {
+        "description": "MQTT broker name to talk to."
+      }
+    },
+    "mqttPort":{
+      "type": "string",
+      "defaultValue": "25684",
+      "metadata": {
+        "description": "The port on which to talk to MQTT broker."
+      }
+    },
+    "apiPath":{
+      "type": "string",
+      "defaultValue": "/api/BobbAPI/2.0",
+      "metadata": {
+        "description": "URL path for API calls."
+      }
+    },
+    "apiServer":{
+      "type": "string",
+      "defaultValue": "engine.bobb.ai",
+      "metadata": {
+        "description": "Server name for API calls."
+      }
+    },
+    "adminAuthToken":{
+      "type": "string",
+      "defaultValue": "2c1ae665-0d9e-4a71-86b5-cc96d014fdfc.c35887ba-0a2f-4245-ad83-2f4461974d97",
+      "metadata": {
+        "description": "Perpetually valid API key to use for API calls."
+      }
+    },
+    "azureConnStr":{
+      "type": "string",
+      "defaultValue": "DefaultEndpointsProtocol=https;AccountName=bobbstorage;AccountKey=M40eFcPnznPg4W5R9JON4ZHYwUhUd+ZCuHPYp0np82yPCk2KEkdVvmG3P983+m8Lpcl3shBfXCYXWsIbQOHEzA==;EndpointSuffix=core.windows.net",
+      "metadata": {
+        "description": "The connection string for the Azure storage account where data should live."
+      }
+    },
+    "secretKey":{
+      "type": "string",
+      "defaultValue": "Jsq8HOGfDzuK0b6ymZWvd7cWZhzC5BXkhE6CgDooTQnFLAFmzXbKi9h3qyBxjl1B",
+      "metadata": {
+        "description": "The private key to use for JFDI auth/auth ops."
       }
     }
   },
@@ -151,7 +201,14 @@
           },
           "properties": {
             "WEBSITE_NODE_DEFAULT_VERSION": "[parameters('nodeJsVersion')]",
-            "NPM_TOKEN": "[parameters('npmToken')]"
+            "NPM_TOKEN": "[parameters('npmToken')]",
+            "secretKey": "[parameters('secretKey')]",
+            "adminAuthToken": "[parameters('adminAuthToken')]",
+            "azureConnStr": "[parameters('azureConnStr')]",
+            "CANONICAL_API_PATH": "[parameters('apiPath')]",
+            "CANONICAL_API_SERVER": "[parameters('apiServer')]",
+            "MQTT_BROKER_ADDRESS": "[parameters('mqttBroker')]",
+            "MQTT_BROKER_PORT": "[parameters('mqttPort')]"
           }
         },
         {
